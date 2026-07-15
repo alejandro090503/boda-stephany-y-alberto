@@ -71,23 +71,79 @@ section::after{
 }
 
 /* ── MUSIC BTN ────────────────────────────────────────── */
-.music-btn{
-  position:fixed;bottom:22px;right:22px;width:46px;height:46px;
-  border-radius:50%;background:rgba(122,74,0,.82);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(255,238,209,.35);color:var(--gold);font-size:18px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:999;
-  box-shadow:0 4px 24px rgba(0,0,0,.45);
-  transition:all .3s var(--spring);
+.vinyl-btn{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+  width:66px;height:66px;border-radius:50%;padding:0;
+  border:none;cursor:pointer;background:transparent;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(149,53,0,.2);
 }
-.music-btn:active{transform:scale(.88)}
-.music-btn.on{border-color:var(--gold);background:rgba(255,238,209,.14);
-  animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(255,238,209,.35),0 4px 24px rgba(0,0,0,.45)}
-  50%{box-shadow:0 0 0 9px rgba(255,238,209,0),0 4px 24px rgba(0,0,0,.45)}
+.vinyl-btn:active{transform:scale(.9)}
+.vinyl-btn:hover{transform:scale(1.08)}
+.vinyl-spin{width:100%;height:100%;border-radius:50%;position:relative}
+.vinyl-btn.is-playing .vinyl-spin{animation:vinylSpin 1.8s linear infinite}
+@keyframes vinylSpin{to{transform:rotate(360deg)}}
+.vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
+  background:
+    radial-gradient(circle,#0A0908 4%,transparent 4.5%),
+    radial-gradient(circle,#ffeed1 0%,#953500 17%,#7a4a00 19%,transparent 19.5%),
+    repeating-radial-gradient(circle,
+      transparent 20%,rgba(255,238,209,.06) 20.8%,transparent 21.5%,
+      transparent 24%,rgba(255,238,209,.04) 24.8%,transparent 25.5%,
+      transparent 28%,rgba(255,238,209,.06) 28.8%,transparent 29.5%,
+      transparent 32%,rgba(255,238,209,.04) 32.8%,transparent 33.5%,
+      transparent 36%,rgba(255,238,209,.06) 36.8%,transparent 37.5%,
+      transparent 40%,rgba(255,238,209,.04) 40.8%,transparent 41.5%,
+      transparent 44%,rgba(255,238,209,.06) 44.8%,transparent 45.5%,
+      transparent 48%,rgba(255,238,209,.04) 48.8%,transparent 49.5%,
+      transparent 52%,rgba(255,238,209,.06) 52.8%,transparent 53.5%,
+      transparent 56%,rgba(255,238,209,.04) 56.8%,transparent 57.5%,
+      transparent 60%,rgba(255,238,209,.06) 60.8%,transparent 61.5%,
+      transparent 64%,rgba(255,238,209,.04) 64.8%,transparent 65.5%,
+      transparent 68%,rgba(255,238,209,.06) 68.8%,transparent 69.5%,
+      transparent 72%,rgba(255,238,209,.04) 72.8%,transparent 73.5%,
+      transparent 76%,rgba(255,238,209,.06) 76.8%,transparent 77.5%,
+      transparent 80%,rgba(255,238,209,.04) 80.8%,transparent 81.5%,
+      transparent 84%,rgba(255,238,209,.06) 84.8%,transparent 85.5%,
+      transparent 88%,rgba(255,238,209,.04) 88.8%,transparent 89.5%,
+      transparent 92%,rgba(255,238,209,.06) 92.8%,transparent 93.5%,
+      transparent 96%,rgba(255,238,209,.04) 96.8%,transparent 97.5%
+    ),
+    radial-gradient(circle,#0A0908 0%,#0A0908 60%,#0A0908 100%);
+  box-shadow:inset 0 0 8px rgba(0,0,0,.4);
 }
+.vinyl-sheen{position:absolute;inset:0;border-radius:50%;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,238,209,.09) 42%,rgba(255,238,209,.16) 48%,rgba(255,238,209,.09) 54%,transparent 66%);
+  pointer-events:none}
+.vinyl-label-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Great Vibes',cursive;font-size:11px;color:#0A0908;
+  text-align:center;line-height:1.1;opacity:.8;pointer-events:none;width:26px}
+.vinyl-label-text small{font-family:'Lato',sans-serif;font-size:5px;letter-spacing:.12em;display:block;margin-top:1px;opacity:.6}
+.vinyl-hole{position:absolute;top:50%;left:50%;width:6px;height:6px;
+  transform:translate(-50%,-50%);border-radius:50%;background:#0A0908;
+  box-shadow:0 0 0 1.5px rgba(149,53,0,.5)}
+.vinyl-icons{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:17px;height:17px;pointer-events:none;z-index:2}
+.vinyl-icons svg{width:100%;height:100%;display:block}
+.vinyl-icon-pause{display:none}
+.vinyl-btn.is-playing .vinyl-icon-play{display:none}
+.vinyl-btn.is-playing .vinyl-icon-pause{display:block}
+.vinyl-btn::after{content:"";position:absolute;inset:-5px;border-radius:50%;
+  border:1px solid var(--gold);opacity:.3;animation:vinylPulse 3s ease-in-out infinite}
+.vinyl-btn.is-playing::after{animation-duration:1.6s}
+@keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.12);opacity:.05}}
+.vinyl-tonearm{position:absolute;top:-4px;right:-2px;width:22px;height:32px;
+  transform-origin:top right;transform:rotate(-28deg);
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none;z-index:1}
+.vinyl-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
+.vinyl-tonearm-line{position:absolute;top:2px;right:4px;width:2px;height:26px;
+  background:linear-gradient(to bottom,#7a4a00,#953500 40%,#7a4a00);
+  border-radius:1px;transform:rotate(-5deg);transform-origin:top center}
+.vinyl-tonearm-head{position:absolute;bottom:0;right:2px;width:5px;height:6px;
+  background:#953500;border-radius:0 0 2px 2px}
+.vinyl-tonearm-pivot{position:absolute;top:0;right:2px;width:7px;height:7px;
+  background:radial-gradient(circle,#ffeed1,#7a4a00);border-radius:50%;
+  box-shadow:0 1px 3px rgba(0,0,0,.3)}
 
 /* ── TOAST ────────────────────────────────────────────── */
 #toast{
@@ -183,12 +239,6 @@ section>*{position:relative;z-index:1}
 .h-cnt{
   position:relative;z-index:3;text-align:center;
   display:flex;flex-direction:column;align-items:center;
-}
-.h-mono{
-  width:clamp(100px,30vw,150px);height:auto;
-  margin-bottom:6px;
-  filter:drop-shadow(0 2px 16px rgba(0,0,0,.35));
-  will-change:transform,opacity;
 }
 .h-names{
   font-family:'Great Vibes',cursive;font-size:clamp(44px,12vw,58px);
@@ -409,17 +459,75 @@ section>*{position:relative;z-index:1}
   width:280px;height:280px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,238,209,.05),transparent 70%);pointer-events:none;
 }
-.dc-sub{text-align:center;font-size:clamp(13px,3.3vw,15px);color:var(--ink);opacity:1;line-height:1.9;margin:14px 0 32px;font-weight:600}
-.dc-figures{
-  display:flex;align-items:center;justify-content:center;
-  gap:30px;margin:6px auto 28px;max-width:380px;
+/* Título "Boho Elegante" — grande, elegante, dorado */
+.dc-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(46px,13vw,68px);line-height:1.05;
+  background:linear-gradient(135deg,#953500 0%,#7a4a00 50%,#605200 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:#7a4a00;
+  margin:8px 0 4px;text-shadow:0 2px 10px rgba(122,74,0,.12);
 }
-.dc-fig{display:flex;flex-direction:column;align-items:center;gap:14px;flex:1}
-.dc-fig img{height:220px;width:auto;display:block;filter:drop-shadow(0 6px 14px rgba(96,82,0,.22))}
-.dc-fig-label{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;letter-spacing:1px;color:var(--ink)}
-.dc-fig-sub{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ink);opacity:.95;margin-top:-8px}
-.dc-sep-line{width:1px;align-self:stretch;min-height:118px;background:linear-gradient(180deg,transparent,rgba(255,238,209,.35) 18%,rgba(255,238,209,.35) 82%,transparent)}
-.palette{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:30px}
+.dc-title-sub{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--ink);opacity:.55;margin-bottom:26px}
+
+/* Imagen de referencia */
+.dc-photo{margin:0 auto 26px;max-width:300px}
+.dc-photo img{width:100%;display:block;border-radius:16px;
+  border:3px solid rgba(122,74,0,.28);
+  box-shadow:0 12px 34px rgba(96,82,0,.28)}
+
+/* Botón que abre el modal */
+.dc-open-btn{
+  display:inline-flex;align-items:center;gap:9px;margin:2px auto 34px;
+  padding:14px 30px;border-radius:50px;cursor:pointer;
+  background:linear-gradient(135deg,#953500,#7a4a00);
+  border:none;color:#ffeed1;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;letter-spacing:.5px;
+  box-shadow:0 8px 24px rgba(149,53,0,.3);
+  transition:transform .3s var(--spring),box-shadow .3s;
+}
+.dc-open-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(149,53,0,.42)}
+.dc-open-btn:active{transform:scale(.96)}
+.dc-open-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Modal a pantalla completa */
+.dc-modal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(10,9,8,.55);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.dc-modal.open{opacity:1;pointer-events:auto}
+.dc-modal-card{
+  position:relative;width:100%;max-width:440px;max-height:88vh;overflow-y:auto;
+  background:linear-gradient(180deg,#ffefff,#ffeed1);
+  border-radius:22px;padding:30px 26px 34px;text-align:center;
+  border:1px solid rgba(122,74,0,.2);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transform:translateY(24px) scale(.96);transition:transform .45s var(--spring);
+  -webkit-overflow-scrolling:touch;
+}
+.dc-modal.open .dc-modal-card{transform:none}
+.dc-modal-close{
+  position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:rgba(122,74,0,.1);border:1px solid rgba(122,74,0,.25);color:#7a4a00;
+  transition:background .25s,transform .25s;z-index:2;
+}
+.dc-modal-close:hover{background:rgba(122,74,0,.2);transform:rotate(90deg)}
+.dc-modal-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.dc-modal-img{width:100%;max-width:230px;margin:6px auto 20px;border-radius:14px;display:block;
+  border:2px solid rgba(122,74,0,.25);box-shadow:0 10px 26px rgba(96,82,0,.25)}
+.dc-modal-title{font-family:'Great Vibes',cursive;font-size:clamp(38px,10vw,50px);line-height:1.05;
+  background:linear-gradient(135deg,#953500,#7a4a00 60%,#605200);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a4a00;
+  margin-bottom:16px}
+.dc-modal-text{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.85;color:var(--ink);opacity:.9;text-align:center}
+.dc-modal-orn{width:120px;height:1px;margin:20px auto 0;background:linear-gradient(90deg,transparent,rgba(122,74,0,.5),transparent)}
+
+/* Paleta de colores sugeridos */
+.palette{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:34px}
 .pal-item{text-align:center;cursor:pointer}
 .pal-sw{
   width:52px;height:52px;border-radius:50%;
@@ -431,19 +539,27 @@ section>*{position:relative;z-index:1}
 }
 .pal-sw:active{transform:scale(1.18)!important}
 .pal-nm{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink);opacity:.9;font-weight:700}
-.dc-note{
-  background:rgba(96,82,0,.06);border-left:2px solid var(--gold);
-  padding:18px 18px;border-radius:0 8px 8px 0;
-  font-size:13px;color:var(--ink);opacity:.9;line-height:1.8;font-weight:600;
-  text-align:left;
+
+/* Card "Por favor evitar" — rediseñada, centrada */
+.dc-avoid-card{
+  max-width:360px;margin:0 auto;padding:26px 24px 28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,238,209,.3));
+  border:1px solid rgba(131,17,0,.22);border-radius:20px;
+  box-shadow:0 10px 30px rgba(96,82,0,.14);text-align:center;
 }
-.dc-note strong{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink);display:block;margin-bottom:6px;font-weight:700}
-.dc-avoid{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:20px}
+.dc-avoid-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  padding:6px 16px;border-radius:50px;background:rgba(131,17,0,.1);
+  font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#831100;
+}
+.dc-avoid-badge svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2}
+.dc-avoid-desc{font-family:'Cormorant Garamond',serif;font-size:14.5px;line-height:1.8;color:var(--ink);opacity:.85;margin-bottom:20px;text-align:center}
+.dc-avoid{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-top:4px}
 .dc-avoid-item{text-align:center}
 .dc-avoid-sw{
-  width:36px;height:36px;border-radius:50%;
-  margin:0 auto 6px;
-  border:2px solid rgba(96,82,0,.12);
+  width:42px;height:42px;border-radius:50%;
+  margin:0 auto 7px;
+  border:2px solid rgba(96,82,0,.14);
   position:relative;
 }
 .dc-avoid-sw::after{
@@ -451,7 +567,7 @@ section>*{position:relative;z-index:1}
   border:2px solid rgba(131,17,0,.5);
   background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(131,17,0,.18) 4px,rgba(131,17,0,.18) 5px);
 }
-.dc-avoid-nm{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--ink);opacity:.8;font-weight:600}
+.dc-avoid-nm{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink);opacity:.8;font-weight:700}
 
 /* ── FAMILY ───────────────────────────────────────────── */
 #family{background:var(--ink);position:relative;overflow:hidden}
@@ -674,36 +790,6 @@ section>*{position:relative;z-index:1}
 .pool-btn:hover::after{opacity:0 !important}
 .pool-btn>*{color:#ffeed1 !important}
 
-/* ── HOSPEDAJE ────────────────────────────────────────── */
-#lodging{background:var(--ink);padding:60px 22px 54px;position:relative;overflow:hidden}
-.hosp-carousel{position:relative;max-width:380px;margin:30px auto 0}
-.hosp-viewport{overflow:hidden}
-.hosp-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
-.hosp-slide{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 30px}
-.hosp-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,238,209,.3);box-shadow:0 12px 34px rgba(0,0,0,.25);margin-bottom:22px}
-.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.hosp-arrow{position:absolute;top:108px;transform:translateY(-50%);width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(235,235,235,.08);border:1px solid rgba(255,238,209,.25);border-radius:50%;cursor:pointer;color:var(--gold);z-index:2;padding:0;backdrop-filter:blur(3px)}
-.hosp-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
-.hosp-arrow.prev{left:-2px}
-.hosp-arrow.next{right:-2px}
-.hosp-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
-.hosp-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,238,209,.3);cursor:pointer;padding:0;transition:background .25s,transform .25s}
-.hosp-dots button.active{background:var(--gold);transform:scale(1.3)}
-.hosp-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;color:var(--cream);margin-bottom:6px}
-.hosp-city{font-family:'Lato',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:16px}
-.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-hosp{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1.5px solid var(--gold);border-radius:50px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;letter-spacing:.5px;text-decoration:none;background:transparent;transition:background .25s,color .25s}
-.btn-hosp:hover{background:var(--gold);color:var(--ink)}
-.btn-hosp svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:430px){
-  .hosp-carousel{max-width:340px}
-  .hosp-slide{padding:8px 22px}
-  .hosp-photo{width:172px;height:172px}
-  .hosp-arrow{top:94px}
-  .hosp-name{font-size:20px}
-  .btn-hosp{padding:10px 18px;font-size:14px}
-}
-
 /* ── FOOTER ───────────────────────────────────────────── */
 #footer{
   background:linear-gradient(180deg,var(--ink2),var(--ink));
@@ -756,23 +842,46 @@ section>*{position:relative;z-index:1}
 #gifts .lbl{font-weight:700;opacity:.8}
 #gifts .gline{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .gf-sub{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(16px,4vw,19px);font-style:italic;color:var(--cream);opacity:.9;line-height:1.9;margin:14px 0 40px;font-weight:500}
-/* ── Sobre interactivo lluvia de sobres ── */
-.env-interactive{display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;border:none;background:none;padding:0}
-.env-body{perspective:700px;position:relative;width:260px;height:200px}
-.env-body svg.env-svg{width:100%;height:100%}
-.env-flap-wrap{position:absolute;top:46px;left:18px;width:224px;height:86px;transform-origin:top center;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2}
-.env-interactive.open .env-flap-wrap{transform:rotateX(-175deg)}
-.env-open-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s .3s ease,opacity .4s .38s ease;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 20px;text-align:center;pointer-events:none}
-.env-interactive.open .env-open-content{max-height:240px;opacity:1;pointer-events:auto}
-.env-mailbox-icon{width:40px;height:40px;color:var(--gold);margin-top:10px}
-.env-title{font-family:'Great Vibes',cursive;font-size:30px;color:var(--cream);letter-spacing:.5px;line-height:1.2}
-.env-desc{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--cream);opacity:.8;line-height:1.75}
-.env-tap-hint{font-family:'Lato',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:6px;transition:opacity .3s}
-.env-interactive.open~.env-tap-hint{opacity:0;pointer-events:none}
-@keyframes env-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.env-body{animation:env-breathe 3.6s ease-in-out infinite}
-.gf-nt{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.7;margin:10px 0 0 58px}
-.gf-msg{font-size:12px;color:var(--cream);opacity:.55;line-height:1.8;margin:14px 0 0 58px}
+/* ── Mesa de regalos — caja de regalo interactiva ── */
+.gbx{position:relative;background:rgba(255,238,209,.05);border-radius:20px;padding:26px 22px 24px;
+  box-shadow:0 8px 40px rgba(0,0,0,.35);border:1px solid rgba(255,238,209,.16);
+  text-align:center;overflow:hidden}
+.gbx-present{width:128px;height:128px;margin:2px auto 0;cursor:pointer;border:none;background:none;padding:0;
+  display:block;position:relative;-webkit-tap-highlight-color:transparent}
+.gbx-present svg{width:100%;height:100%;display:block;transform-origin:50% 100%;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.4))}
+.gbx-lid{transform-origin:50% 100%;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.gbx-present.shake{animation:gbxShake .5s ease-in-out}
+@keyframes gbxShake{
+  0%,100%{transform:rotate(0) translateY(0)}
+  15%{transform:rotate(-7deg) translateY(-2px)}
+  30%{transform:rotate(6deg)}
+  45%{transform:rotate(-5deg)}
+  60%{transform:rotate(4deg)}
+  75%{transform:rotate(-2deg)}
+}
+.gbx.opened .gbx-present{animation:gbxTopple .7s cubic-bezier(.6,-0.2,.7,1) forwards;pointer-events:none}
+@keyframes gbxTopple{
+  0%{transform:rotate(0) translateY(0);opacity:1}
+  30%{transform:rotate(-4deg) translateY(0)}
+  100%{transform:rotate(14deg) translateY(30px);opacity:0}
+}
+.gbx.opened .gbx-lid{transform:translateY(-26px) rotate(-18deg)}
+.gbx-tap{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:1px;
+  color:var(--gold);opacity:.85;margin-top:8px;transition:opacity .3s}
+.gbx.opened .gbx-tap{opacity:0;height:0;margin:0;overflow:hidden}
+.gbx-reveal{max-height:0;opacity:0;overflow:hidden;transform:translateY(8px);
+  transition:max-height .6s ease,opacity .5s .15s ease,transform .5s .15s ease}
+.gbx.opened .gbx-reveal{max-height:280px;opacity:1;transform:none}
+.gbx-logo{height:44px;display:flex;align-items:center;justify-content:center;margin:4px auto 12px;padding:9px 16px;border-radius:12px;background:#ffffff}
+.gbx-logo.liverpool img{height:20px;display:block}
+.gbx-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream)}
+.gbx-desc{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.gbx-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:12px 28px;
+  background:linear-gradient(135deg,#953500,#831100);color:#ffeed1;border-radius:24px;font-family:'Cormorant Garamond',serif;
+  font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  box-shadow:0 6px 20px rgba(149,53,0,.3);transition:transform .3s,box-shadow .3s}
+.gbx-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(149,53,0,.4)}
 
 /* ── ALBUM QR ─────────────────────────────────────────── */
 #album{background:var(--ink);position:relative;overflow:hidden}
@@ -893,7 +1002,24 @@ section>*{position:relative;z-index:1}
 </audio>
 
 <!-- MUSIC BTN -->
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Música">♪</button>
+<button class="vinyl-btn" id="musicBtn" type="button" aria-label="Reproducir música de la invitación">
+  <div class="vinyl-tonearm">
+    <div class="vinyl-tonearm-pivot"></div>
+    <div class="vinyl-tonearm-line"></div>
+    <div class="vinyl-tonearm-head"></div>
+  </div>
+  <div class="vinyl-spin">
+    <div class="vinyl-disc">
+      <div class="vinyl-sheen"></div>
+      <div class="vinyl-label-text">S&amp;A<small>2026</small></div>
+      <div class="vinyl-hole"></div>
+    </div>
+  </div>
+  <div class="vinyl-icons">
+    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#0A0908" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#0A0908" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </div>
+</button>
 
 <!-- TOAST -->
 <div id="toast"></div>
@@ -911,7 +1037,6 @@ section>*{position:relative;z-index:1}
   <div class="h-particles" id="hPart"></div>
 
   <div class="h-cnt" id="hCnt">
-    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/monograma.png" alt="S&amp;A" class="h-mono" id="hMono">
     <div class="h-names" id="hNames">Stephany &amp; Alberto</div>
 
     <div class="gline" style="margin-top:18px" id="hLine"></div>
@@ -1055,60 +1180,34 @@ section>*{position:relative;z-index:1}
   <div class="gline"></div>
   <p class="gf-sub">Si deseas obsequiarnos algo especial,<br>compartimos contigo nuestras opciones.</p>
 
-  <div style="margin:32px auto 0;display:flex;flex-direction:column;align-items:center;gap:0;">
-    <button class="env-interactive" aria-label="Sobre — toca para abrir" aria-expanded="false">
-      <div class="env-body">
-        <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="be-env-fill" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#ffeed1"/>
-              <stop offset="100%" stop-color="#ffefff"/>
-            </linearGradient>
-          </defs>
-          <rect x="18" y="52" width="224" height="132" rx="10"
-                fill="url(#be-env-fill)" stroke="rgba(255,238,209,.5)" stroke-width="1.4"/>
-          <path d="M18 184 L130 110 L242 184" stroke="rgba(255,238,209,.35)" stroke-width="1" fill="none"/>
-          <line x1="90"  y1="30" x2="90"  y2="20" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round" opacity=".4"/>
-          <line x1="130" y1="24" x2="130" y2="14" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
-          <line x1="170" y1="30" x2="170" y2="20" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round" opacity=".4"/>
-          <line x1="110" y1="18" x2="110" y2="10" stroke="var(--gold-lt)" stroke-width="1" stroke-linecap="round" opacity=".3"/>
-          <line x1="150" y1="18" x2="150" y2="10" stroke="var(--gold-lt)" stroke-width="1" stroke-linecap="round" opacity=".3"/>
-          <circle cx="130" cy="118" r="16" fill="rgba(255,238,209,.12)" stroke="rgba(255,238,209,.4)" stroke-width="1"/>
-          <text x="130" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="var(--ink)" opacity=".7">S&amp;A</text>
-        </svg>
-        <div class="env-flap-wrap" aria-hidden="true">
-          <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%">
-            <defs>
-              <linearGradient id="be-flap-fill" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%" stop-color="#ebebeb"/>
-                <stop offset="100%" stop-color="#ffeed1"/>
-              </linearGradient>
-            </defs>
-            <path d="M0 0 L112 86 L224 0 Z"
-                  fill="url(#be-flap-fill)" stroke="rgba(255,238,209,.5)" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
-      <div class="env-open-content" aria-live="polite">
-        <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <rect x="8" y="22" width="36" height="24" rx="5"/>
-          <path d="M8 30 Q26 38 44 30"/>
-          <rect x="18" y="8" width="16" height="16" rx="2"/>
-          <path d="M18 8 Q26 3 34 8"/>
-          <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
-        </svg>
-        <p class="env-title">Lluvia de Sobres</p>
-        <p class="env-desc">El día de la boda habrá un buzón especial<br>donde podrás depositar tu sobre con mucho cariño.</p>
-      </div>
+  <div class="gbx" style="max-width:340px;margin:36px auto 0">
+    <button type="button" class="gbx-present" aria-label="Abrir regalo — Liverpool">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="sa-ribbon" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffefff"/>
+            <stop offset="45%" stop-color="#ffeed1"/>
+            <stop offset="100%" stop-color="#ebebeb"/>
+          </linearGradient>
+        </defs>
+        <rect x="22" y="52" width="76" height="54" rx="6" fill="#7a4a00"/>
+        <rect x="54" y="52" width="12" height="54" fill="url(#sa-ribbon)" opacity=".92"/>
+        <g class="gbx-lid">
+          <rect x="16" y="40" width="88" height="17" rx="5" fill="#953500"/>
+          <rect x="54" y="40" width="12" height="17" fill="url(#sa-ribbon)" opacity=".92"/>
+          <path d="M60 41 C48 22 30 26 39 41 Z" fill="url(#sa-ribbon)"/>
+          <path d="M60 41 C72 22 90 26 81 41 Z" fill="url(#sa-ribbon)"/>
+          <circle cx="60" cy="40" r="6" fill="url(#sa-ribbon)"/>
+        </g>
+      </svg>
     </button>
-    <p class="env-tap-hint">Toca el sobre</p>
-  </div>
-
-  <div style="margin-top:40px">
-    <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52027923" target="_blank" rel="noopener" class="btn" style="max-width:340px;margin:0 auto;display:flex;justify-content:center">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/><polyline points="12 15 12 3"/><path d="M16 6l-4 4-4-4"/><rect x="2" y="12" width="20" height="2" rx="1"/></svg>
-      Mesa de Regalos Liverpool
-    </a>
+    <p class="gbx-tap">Toca el regalo</p>
+    <div class="gbx-reveal">
+      <div class="gbx-logo liverpool"><img src="./liverpool.svg" alt="Liverpool"></div>
+      <div class="gbx-name">Liverpool</div>
+      <div class="gbx-desc">Evento No. 52027923</div>
+      <a class="gbx-cta" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52027923" target="_blank" rel="noopener">Ver mesa &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -1144,17 +1243,18 @@ section>*{position:relative;z-index:1}
   <span class="lbl">Vestimenta</span>
   <h2 class="ttl">Código de Vestimenta</h2>
   <div class="gline"></div>
-  <p class="dc-sub"><em style="font-family:'Cormorant Garamond',serif;font-size:17px">Boho Elegante</em></p>
 
-  <div style="text-align:center;margin:0 auto 28px;max-width:320px">
-    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/70750b9c-a231-4756-bc3d-cf7d7212126a/codigo-vestimenta-1782766812509.png" alt="Referencia de vestimenta boho elegante" loading="lazy" style="width:100%;border-radius:14px;border:2px solid rgba(122,74,0,.2);box-shadow:0 6px 20px rgba(0,0,0,.15)">
+  <p class="dc-title">Boho Elegante</p>
+  <p class="dc-title-sub">Tonos tierra &middot; Naturales</p>
+
+  <div class="dc-photo">
+    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/70750b9c-a231-4756-bc3d-cf7d7212126a/codigo-vestimenta-1782766812509.png" alt="Referencia de vestimenta boho elegante" loading="lazy">
   </div>
 
-  <div class="dc-note" id="dcNote" style="margin-bottom:28px">
-    <strong>Boho Elegante</strong>
-    Imagina una tarde entre la naturaleza, rodeada de tonos cálidos y detalles que cuentan historias. Nos encantará que formes parte de este momento vistiendo en colores tierra, neutros y naturales, con un estilo boho que refleje la esencia de nuestra celebración.<br><br>
-    Si decides acompañar tu atuendo con unas botas, ¡serán el toque perfecto! Si prefieres usar tacones, te sugerimos evitar los de aguja, ya que parte del recorrido se realiza sobre un camino de tierra.
-  </div>
+  <button type="button" class="dc-open-btn" id="dcOpenBtn">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    Ver los detalles
+  </button>
 
   <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink);opacity:.7;text-align:center;margin-bottom:24px;font-weight:700">Colores sugeridos</p>
   <div class="palette" id="palette">
@@ -1165,9 +1265,13 @@ section>*{position:relative;z-index:1}
     <div class="pal-item"><div class="pal-sw" style="background:#ffeed1"></div><p class="pal-nm">Crema</p></div>
     <div class="pal-item"><div class="pal-sw" style="background:#ebebeb"></div><p class="pal-nm">Gris</p></div>
   </div>
-  <div class="dc-note" id="dcNoteAvoid">
-    <strong>Por favor evitar:</strong>
-    Como parte de nuestra paleta de colores, les pedimos amablemente evitar los tonos verdes, así como el blanco, marfil y colores similares, reservados para la novia.
+
+  <div class="dc-avoid-card">
+    <span class="dc-avoid-badge">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Por favor evitar
+    </span>
+    <p class="dc-avoid-desc">Como parte de nuestra paleta, les pedimos amablemente evitar los tonos verdes, así como el blanco, marfil y colores similares, reservados para la novia.</p>
     <div class="dc-avoid">
       <div class="dc-avoid-item"><div class="dc-avoid-sw" style="background:#FFFFFF"></div><p class="dc-avoid-nm">Blanco</p></div>
       <div class="dc-avoid-item"><div class="dc-avoid-sw" style="background:#526c00"></div><p class="dc-avoid-nm">Verde</p></div>
@@ -1175,6 +1279,22 @@ section>*{position:relative;z-index:1}
     </div>
   </div>
 </section>
+
+<!-- Modal código de vestimenta -->
+<div class="dc-modal" id="dcModal" role="dialog" aria-modal="true" aria-label="Detalles del código de vestimenta">
+  <div class="dc-modal-card">
+    <button type="button" class="dc-modal-close" id="dcModalClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <img class="dc-modal-img" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/70750b9c-a231-4756-bc3d-cf7d7212126a/codigo-vestimenta-1782766812509.png" alt="Referencia de vestimenta boho elegante" loading="lazy">
+    <p class="dc-modal-title">Boho Elegante</p>
+    <p class="dc-modal-text">
+      Imagina una tarde entre la naturaleza, rodeada de tonos cálidos y detalles que cuentan historias. Nos encantará que formes parte de este momento vistiendo en colores tierra, neutros y naturales, con un estilo boho que refleje la esencia de nuestra celebración.<br><br>
+      Si decides acompañar tu atuendo con unas botas, ¡serán el toque perfecto! Si prefieres usar tacones, te sugerimos evitar los de aguja, ya que parte del recorrido se realiza sobre un camino de tierra.
+    </p>
+    <div class="dc-modal-orn"></div>
+  </div>
+</div>
 
 <div class="blend" style="background:linear-gradient(to bottom,#ffeed1,var(--ink))"></div>
 
@@ -1222,21 +1342,9 @@ section>*{position:relative;z-index:1}
 </section>
 
 
-<!-- ═══════════════ 12. HOSPEDAJE ═══════════════════ -->
-<section id="lodging">
-  <span class="lbl">Para tu estancia</span>
-  <h2 class="ttl">Sugerencia de Hospedaje</h2>
-  <div class="gline"></div>
-  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;text-align:center;color:var(--cream);opacity:.78;max-width:320px;margin:0 auto 4px">Si vienes de fuera, te recomendamos estas opciones de hospedaje cercanas.</p>
-
-  <div style="text-align:center;margin-top:30px">
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--cream);opacity:.7;line-height:1.8"><em style="opacity:.6">Información de hospedaje por confirmar</em></p>
-  </div>
-</section>
-
 <div class="blend blend-dark-beige"></div>
 
-<!-- ═══════════════ 13. RSVP BODA ═════════════════════ -->
+<!-- ═══════════════ 12. RSVP BODA ═════════════════════ -->
 <section id="rsvp">
   <div class="rsvp-card">
     <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
@@ -1343,7 +1451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     countdown();
     setInterval(countdown, 1000);
     var a = document.getElementById('bgMusic');
-    if (a) { a.play().then(function(){ playing=true; document.getElementById('musicBtn').innerHTML='♬'; document.getElementById('musicBtn').classList.add('on'); }).catch(function(){}); }
+    if (a) { a.play().then(function(){ playing=true; document.getElementById('musicBtn').classList.add('is-playing'); }).catch(function(){}); }
   }
 
   function revealInvitation() {
@@ -1413,14 +1521,12 @@ window.addEventListener('scroll', () => {
 
 /* ── HERO ANIMATIONS ─────────────────────────────────── */
 function heroAnim() {
-  gsap.set(['#hMono','#hNames','#hLine','#hDate','#hScroll'], { opacity: 0 });
-  gsap.set('#hMono', { scale: .55 });
-  gsap.set('#hNames', { y: 20 });
+  gsap.set(['#hNames','#hLine','#hDate','#hScroll'], { opacity: 0 });
+  gsap.set('#hNames', { y: 20, scale: .9 });
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   tl
-    .to('#hMono',  { opacity: 1, scale: 1, duration: 1.2, ease: 'back.out(1.4)' }, .1)
-    .to('#hNames', { opacity: 1, y: 0, duration: .9 }, .6)
+    .to('#hNames', { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'back.out(1.4)' }, .2)
     .to('#hLine',  { opacity: .7, duration: .6 }, 1.0)
     .to('#hDate',  { opacity: 1, duration: .7  }, 1.2)
     .to('#hScroll',{ opacity: 1, duration: .5  }, 1.5);
@@ -1589,22 +1695,32 @@ function scrollAnims() {
     });
   })();
 
-  gsap.from('.dc-sub', {
-    opacity: 0, y: 22, duration: .8, ease: cine,
-    scrollTrigger: { trigger: '#dresscode', start: 'top 82%', once: true }
-  });
-  gsap.from('.dc-fig', {
-    opacity: 0, y: 30, scale: .92, duration: .9, stagger: .18, ease: cine,
-    scrollTrigger: { trigger: '.dc-figures', start: 'top 85%', once: true }
+  gsap.from(['.dc-title','.dc-title-sub','.dc-photo','#dcOpenBtn'], {
+    opacity: 0, y: 24, duration: .8, stagger: .12, ease: cine,
+    scrollTrigger: { trigger: '#dresscode', start: 'top 78%', once: true }
   });
   gsap.set('.pal-sw', { scale: 0 });
   ScrollTrigger.create({
     trigger: '#palette', start: 'top 86%', once: true,
     onEnter() {
       gsap.to('.pal-sw', { scale: 1, duration: .6, stagger: .1, ease: 'back.out(2.5)' });
-      gsap.from('#dcNote', { opacity: 0, x: -22, duration: .7, delay: .5, ease: cine });
+      gsap.from('.dc-avoid-card', { opacity: 0, y: 22, duration: .7, delay: .5, ease: cine });
     }
   });
+
+  // Modal código de vestimenta
+  (function(){
+    var modal = document.getElementById('dcModal');
+    var openBtn = document.getElementById('dcOpenBtn');
+    var closeBtn = document.getElementById('dcModalClose');
+    if(!modal || !openBtn) return;
+    function open(){ modal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  })();
 
   gsap.from('.fam-ttl', {
     opacity: 0, y: 22, duration: .7, stagger: .2, ease: cine,
@@ -1620,24 +1736,22 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#kids-policy', start: 'top 82%', once: true }
   });
 
-  gsap.from('.env-interactive', {
+  gsap.from('.gbx', {
     opacity: 0, y: 28, scale: .97, duration: .7, ease: cine,
     scrollTrigger: { trigger: '#gifts', start: 'top 80%', once: true }
   });
 
-  // Sobre interactivo
+  // Caja de regalo interactiva
   (function(){
-    var btn = document.querySelector('.env-interactive');
-    if(!btn) return;
-    btn.addEventListener('click', function(){
-      var isOpen = btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.querySelectorAll('.gbx-present').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var box = btn.closest('.gbx');
+        if (box.classList.contains('opened')) return;
+        btn.classList.add('shake');
+        setTimeout(function(){ box.classList.add('opened'); }, 480);
+        setTimeout(function(){ btn.style.display = 'none'; }, 1180);
+      });
     });
-    btn.addEventListener('touchstart', function(e){
-      e.preventDefault();
-      var isOpen = btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }, {passive:false});
   })();
 
   gsap.from('.alb-qr-frame', {
@@ -1651,16 +1765,6 @@ function scrollAnims() {
 
   initWheel();
 
-  gsap.from('#lodging .ttl, #lodging .lbl, #lodging .gline', {
-    opacity:0, y:22, duration:.8, stagger:.1, ease:cine,
-    scrollTrigger:{trigger:'#lodging', start:'top 82%', once:true}
-  });
-  gsap.from('.hosp-carousel', {
-    opacity:0, y:40, scale:.95, duration:1, ease:cine,
-    scrollTrigger:{trigger:'.hosp-carousel', start:'top 85%', once:true}
-  });
-
-  initHospCarousel();
 
   gsap.fromTo('.rsvp-card',{opacity:0,y:50,scale:.95},{opacity:1,y:0,scale:1,duration:1.4,ease:cine,stagger:.2,scrollTrigger:{trigger:'#rsvp',start:'top 82%',once:true}});
   gsap.fromTo('.rsvp-ornament',{opacity:0,scaleX:0},{opacity:1,scaleX:1,duration:1.3,ease:'power3.out',scrollTrigger:{trigger:'.rsvp-ornament',start:'top 85%',once:true}});
@@ -1700,16 +1804,22 @@ function countdown() {
   }
 }
 
-/* ── MUSIC ───────────────────────────────────────────── */
+/* ── MUSIC (vinyl button) ────────────────────────────── */
 const aud = document.getElementById('bgMusic');
 const mBtn = document.getElementById('musicBtn');
 let playing = false;
 
-function toggleMusic() {
-  if (playing) { aud.pause(); mBtn.innerHTML='♪'; mBtn.classList.remove('on'); }
-  else { aud.play().catch(()=>{}); mBtn.innerHTML='♬'; mBtn.classList.add('on'); }
-  playing = !playing;
+if (aud) {
+  aud.addEventListener('play',  function(){ mBtn.classList.add('is-playing'); playing = true; });
+  aud.addEventListener('pause', function(){ mBtn.classList.remove('is-playing'); playing = false; });
 }
+
+function toggleMusic() {
+  if (!aud) return;
+  if (aud.paused) { aud.play().catch(()=>{}); }
+  else { aud.pause(); }
+}
+if (mBtn) mBtn.addEventListener('click', toggleMusic);
 
 /* ── RSVP (PANEL INVITADOS) ──────────────────────────── */
 const SLUG = 'boda-stephany-y-alberto';
@@ -1921,35 +2031,6 @@ function initWheel(){
     });
   }
 })();
-
-/* ── HOSPEDAJE CAROUSEL ─────────────────────────────── */
-function initHospCarousel(){
-  var track=document.getElementById('hospTrack');
-  if(!track)return;
-  var slides=track.querySelectorAll('.hosp-slide');
-  var dots=document.querySelectorAll('#hospDots button');
-  var prev=document.querySelector('.hosp-arrow.prev');
-  var next=document.querySelector('.hosp-arrow.next');
-  var idx=0,n=slides.length;
-  if(!n)return;
-
-  function go(i){
-    idx=((i%n)+n)%n;
-    track.style.transform='translateX(-'+(idx*100)+'%)';
-    dots.forEach(function(d,j){d.classList.toggle('active',j===idx);});
-  }
-  if(prev)prev.addEventListener('click',function(){go(idx-1);});
-  if(next)next.addEventListener('click',function(){go(idx+1);});
-  dots.forEach(function(d,j){d.addEventListener('click',function(){go(j);});});
-
-  var sx=0,dx=0,dragging=false;
-  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;dx=0;dragging=true;},{passive:true});
-  track.addEventListener('touchmove',function(e){if(!dragging)return;dx=e.touches[0].clientX-sx;},{passive:true});
-  track.addEventListener('touchend',function(){
-    if(!dragging)return;dragging=false;
-    if(Math.abs(dx)>40){go(dx<0?idx+1:idx-1);}
-  });
-}
 
 /* ── TOAST ───────────────────────────────────────────── */
 function toast(msg) {
