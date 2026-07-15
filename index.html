@@ -470,11 +470,32 @@ section>*{position:relative;z-index:1}
 }
 .dc-title-sub{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#7a4a00;opacity:.55;margin-bottom:26px}
 
-/* Imagen de referencia */
-.dc-photo{margin:0 auto 26px;max-width:300px}
+/* Imagen de referencia — palpita e invita a tocar para ampliar */
+.dc-photo{margin:0 auto 24px;max-width:300px;position:relative;cursor:pointer;border-radius:18px;
+  -webkit-tap-highlight-color:transparent;outline:none}
 .dc-photo img{width:100%;display:block;border-radius:16px;
-  border:3px solid rgba(122,74,0,.28);
-  box-shadow:0 12px 34px rgba(96,82,0,.28)}
+  border:3px solid #953500;
+  box-shadow:0 12px 34px rgba(96,82,0,.28);
+  transition:transform .45s var(--spring)}
+.dc-photo::after{content:'';position:absolute;inset:-3px;border-radius:19px;pointer-events:none;
+  border:2px solid #953500;
+  animation:dcPulse 2.1s ease-in-out infinite}
+@keyframes dcPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(149,53,0,.5);opacity:1}
+  55%{box-shadow:0 0 0 12px rgba(149,53,0,0);opacity:.55}
+}
+.dc-photo:hover img{transform:scale(1.02)}
+.dc-photo:active img{transform:scale(.97)}
+.dc-photo-hint{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 15px;border-radius:50px;white-space:nowrap;
+  background:rgba(122,74,0,.88);color:#ffeed1;
+  font-family:'Lato',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);pointer-events:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.28);
+  animation:dcHintFloat 2.1s ease-in-out infinite}
+@keyframes dcHintFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-3px)}}
+.dc-photo-hint svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* Botón que abre el modal */
 .dc-open-btn{
@@ -832,7 +853,7 @@ section>*{position:relative;z-index:1}
 .kp-note{font-size:clamp(8px,2.2vw,10px);letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-top:18px}
 
 /* ── GIFTS ────────────────────────────────────────────── */
-#gifts{background:linear-gradient(175deg,rgba(122,74,0,.55),rgba(96,82,0,.85));position:relative;overflow:hidden}
+#gifts{background:linear-gradient(175deg,#ffefff,#ffeed1);position:relative;overflow:hidden}
 #gifts::before{
   content:'';position:absolute;bottom:-20%;left:50%;transform:translateX(-50%);
   width:280px;height:280px;border-radius:50%;
@@ -873,10 +894,11 @@ section>*{position:relative;z-index:1}
 .gbx-reveal{max-height:0;opacity:0;overflow:hidden;transform:translateY(8px);
   transition:max-height .6s ease,opacity .5s .15s ease,transform .5s .15s ease}
 .gbx.opened .gbx-reveal{max-height:280px;opacity:1;transform:none}
-.gbx-logo{height:44px;display:flex;align-items:center;justify-content:center;margin:4px auto 12px;padding:9px 16px;border-radius:12px;background:#ffffff}
-.gbx-logo.liverpool img{height:20px;display:block}
-.gbx-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream)}
-.gbx-desc{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.gbx-logo{display:inline-flex;align-items:center;justify-content:center;margin:8px auto 16px;padding:18px 34px;border-radius:16px;background:#ffffff;position:relative;
+  box-shadow:0 12px 28px rgba(96,82,0,.18),0 2px 0 rgba(122,74,0,.08) inset;border:1px solid rgba(122,74,0,.1)}
+.gbx-logo::before{content:'';position:absolute;inset:5px;border:1px solid rgba(149,53,0,.18);border-radius:11px;pointer-events:none}
+.gbx-logo.liverpool img{height:26px;display:block;position:relative}
+.gbx-desc{font-family:'Lato',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:2px}
 .gbx-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:12px 28px;
   background:linear-gradient(135deg,#953500,#831100);color:#ffeed1;border-radius:24px;font-family:'Cormorant Garamond',serif;
   font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
@@ -1204,8 +1226,7 @@ section>*{position:relative;z-index:1}
     <p class="gbx-tap">Toca el regalo</p>
     <div class="gbx-reveal">
       <div class="gbx-logo liverpool"><img src="./liverpool.svg" alt="Liverpool"></div>
-      <div class="gbx-name">Liverpool</div>
-      <div class="gbx-desc">Evento No. 52027923</div>
+      <div class="gbx-desc">Mesa de Regalos &middot; Evento 52027923</div>
       <a class="gbx-cta" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52027923" target="_blank" rel="noopener">Ver mesa &rarr;</a>
     </div>
   </div>
@@ -1247,8 +1268,12 @@ section>*{position:relative;z-index:1}
   <p class="dc-title">Boho Elegante</p>
   <p class="dc-title-sub">Tonos tierra &middot; Naturales</p>
 
-  <div class="dc-photo">
+  <div class="dc-photo" id="dcPhoto" role="button" tabindex="0" aria-label="Ampliar la referencia de vestimenta">
     <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/70750b9c-a231-4756-bc3d-cf7d7212126a/codigo-vestimenta-1782766812509.png" alt="Referencia de vestimenta boho elegante" loading="lazy">
+    <span class="dc-photo-hint">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      Toca para ampliar
+    </span>
   </div>
 
   <button type="button" class="dc-open-btn" id="dcOpenBtn">
@@ -1256,7 +1281,7 @@ section>*{position:relative;z-index:1}
     Ver los detalles
   </button>
 
-  <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink);opacity:.7;text-align:center;margin-bottom:24px;font-weight:700">Colores sugeridos</p>
+  <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#7a4a00;opacity:.75;text-align:center;margin-bottom:24px;font-weight:700">Colores sugeridos</p>
   <div class="palette" id="palette">
     <div class="pal-item"><div class="pal-sw" style="background:#831100"></div><p class="pal-nm">Burgundy</p></div>
     <div class="pal-item"><div class="pal-sw" style="background:#7a4a00"></div><p class="pal-nm">Ámbar</p></div>
@@ -1712,11 +1737,16 @@ function scrollAnims() {
   (function(){
     var modal = document.getElementById('dcModal');
     var openBtn = document.getElementById('dcOpenBtn');
+    var photo = document.getElementById('dcPhoto');
     var closeBtn = document.getElementById('dcModalClose');
-    if(!modal || !openBtn) return;
+    if(!modal) return;
     function open(){ modal.classList.add('open'); document.body.style.overflow='hidden'; }
     function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
-    openBtn.addEventListener('click', open);
+    if(openBtn) openBtn.addEventListener('click', open);
+    if(photo){
+      photo.addEventListener('click', open);
+      photo.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+    }
     closeBtn.addEventListener('click', close);
     modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
