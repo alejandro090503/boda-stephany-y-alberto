@@ -210,19 +210,21 @@ section>*{position:relative;z-index:1}
   z-index:0;will-change:transform;
 }
 .h-bg img{
-  width:100%;height:100%;object-fit:cover;object-position:center 35%;
-  filter:brightness(.92) saturate(1.02);
+  width:100%;height:100%;object-fit:cover;object-position:center 40%;
+  filter:brightness(.86) saturate(1.03);
   display:block;
 }
 
-/* Overlay neutro y sutil — solo para legibilidad del texto (sin tinte amarillo) */
+/* Overlay neutro y sutil — realza el texto sobre la foto del bosque (sin tinte amarillo) */
 .h-ov{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to bottom,
-    rgba(0,0,0,.18) 0%,
-    rgba(0,0,0,0) 24%,
-    rgba(0,0,0,0) 58%,
-    rgba(0,0,0,.5) 100%);
+  background:
+    radial-gradient(ellipse at 50% 47%, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 56%),
+    linear-gradient(to bottom,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,0) 26%,
+      rgba(0,0,0,0) 56%,
+      rgba(0,0,0,.52) 100%);
 }
 .h-frame{display:none}
 
@@ -993,6 +995,44 @@ section>*{position:relative;z-index:1}
 }
 .el-credit:hover{opacity:.85}
 .el-credit svg{opacity:.9}
+  /* ── TEMÁTICA BOSCOSA: fondos de bosque por sección, velo crema con fade
+        vertical (seams suaves) manteniendo legibilidad del texto ── */
+  #countdown{
+    background:linear-gradient(to bottom,rgba(255,239,255,.97) 0%,rgba(255,239,255,.83) 20%,rgba(255,239,255,.83) 80%,rgba(255,239,255,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-03.jpg?v=1') center/cover no-repeat;
+  }
+  #location{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.82) 20%,rgba(255,238,209,.82) 80%,rgba(255,238,209,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-01.jpg?v=1') center/cover no-repeat;
+  }
+  #itinerary{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.87) 22%,rgba(255,238,209,.87) 78%,rgba(255,238,209,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-08.jpg?v=1') center/cover no-repeat;
+  }
+  #kids-policy{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.84) 20%,rgba(255,238,209,.84) 80%,rgba(255,238,209,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-04.jpg?v=1') center/cover no-repeat;
+  }
+  #gifts{
+    background:linear-gradient(to bottom,rgba(255,239,255,.97) 0%,rgba(255,238,209,.86) 22%,rgba(255,238,209,.86) 78%,rgba(255,239,255,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-06.jpg?v=1') center/cover no-repeat;
+  }
+  #album{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.84) 20%,rgba(255,238,209,.84) 80%,rgba(255,238,209,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-05.jpg?v=1') center/cover no-repeat;
+  }
+  #family{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.83) 20%,rgba(255,238,209,.83) 80%,rgba(255,238,209,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-07.jpg?v=1') center/cover no-repeat;
+  }
+  #rsvp{
+    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.83) 22%,rgba(255,238,209,.83) 78%,rgba(255,239,255,.97) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-02.jpg?v=1') center/cover no-repeat;
+  }
+  #dresscode{
+    background:linear-gradient(to bottom,rgba(255,238,209,.98) 0%,rgba(255,238,209,.9) 22%,rgba(255,238,209,.9) 78%,rgba(255,238,209,.98) 100%),
+      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-07.jpg?v=1') center/cover no-repeat;
+  }
   </style>
 </head>
 <body>
@@ -1045,8 +1085,8 @@ section>*{position:relative;z-index:1}
 <section id="hero">
   <!-- Background photo (parallax target) -->
   <div class="h-bg" id="heroBg">
-    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg"
-         alt="Stephany y Alberto" loading="eager" id="heroPic">
+    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hero.jpg?v=1"
+         alt="Stephany y Alberto en el bosque" loading="eager" id="heroPic">
   </div>
   <div class="h-ov"></div>
   <div class="h-frame"></div>
@@ -1333,12 +1373,18 @@ section>*{position:relative;z-index:1}
   <div class="gal-header-ornament fu"></div>
   <div class="wheel-scene rv" id="wheel-scene">
     <div class="wheel-ring" id="wheel-ring">
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy"></div>
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy" style="object-position:left center"></div>
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy" style="object-position:right center"></div>
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy" style="object-position:center top"></div>
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy" style="object-position:center bottom"></div>
-      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/stephany-y-alberto-1.jpeg" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g1.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g2.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g3.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g4.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g5.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g6.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g7.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g8.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g9.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g10.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g11.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/g12.jpg?v=1" alt="Stephany y Alberto" loading="lazy"></div>
     </div>
   </div>
   <p class="gal-hint rv">Arrastra para girar</p>
@@ -1837,7 +1883,7 @@ function initWheel(){
   if(!ring)return;
   var cards=ring.querySelectorAll('.wheel-card');
   var n=cards.length;if(!n)return;
-  var radius=210;
+  var radius=n>=10?345:(n>=8?280:210);
   var rot=0,vel=0,isDrag=false,startX=0,startRot=0,lastX=0,rafId=null;
   cards.forEach(function(card,i){
     card.style.transform='rotateY('+(360/n*i)+'deg) translateZ('+radius+'px)';
