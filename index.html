@@ -995,44 +995,16 @@ section>*{position:relative;z-index:1}
 }
 .el-credit:hover{opacity:.85}
 .el-credit svg{opacity:.9}
-  /* ── TEMÁTICA BOSCOSA: fondos de bosque por sección, velo crema con fade
-        vertical (seams suaves) manteniendo legibilidad del texto ── */
-  #countdown{
-    background:linear-gradient(to bottom,rgba(255,239,255,.97) 0%,rgba(255,239,255,.83) 20%,rgba(255,239,255,.83) 80%,rgba(255,239,255,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-03.jpg?v=1') center/cover no-repeat;
+  /* ── MARCO DE HOJAS (follaje de olivo en las esquinas) por sección ── */
+  #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
+    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat;
+    background-position:left -14px top -10px,right -14px top -10px,left -14px bottom -10px,right -14px bottom -10px;
+    background-size:auto 19%,auto 19%,auto 19%,auto 19%;
   }
-  #location{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.82) 20%,rgba(255,238,209,.82) 80%,rgba(255,238,209,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-01.jpg?v=1') center/cover no-repeat;
-  }
-  #itinerary{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.87) 22%,rgba(255,238,209,.87) 78%,rgba(255,238,209,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-08.jpg?v=1') center/cover no-repeat;
-  }
-  #kids-policy{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.84) 20%,rgba(255,238,209,.84) 80%,rgba(255,238,209,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-04.jpg?v=1') center/cover no-repeat;
-  }
-  #gifts{
-    background:linear-gradient(to bottom,rgba(255,239,255,.97) 0%,rgba(255,238,209,.86) 22%,rgba(255,238,209,.86) 78%,rgba(255,239,255,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-06.jpg?v=1') center/cover no-repeat;
-  }
-  #album{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.84) 20%,rgba(255,238,209,.84) 80%,rgba(255,238,209,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-05.jpg?v=1') center/cover no-repeat;
-  }
-  #family{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.83) 20%,rgba(255,238,209,.83) 80%,rgba(255,238,209,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-07.jpg?v=1') center/cover no-repeat;
-  }
-  #rsvp{
-    background:linear-gradient(to bottom,rgba(255,238,209,.97) 0%,rgba(255,238,209,.83) 22%,rgba(255,238,209,.83) 78%,rgba(255,239,255,.97) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-02.jpg?v=1') center/cover no-repeat;
-  }
-  #dresscode{
-    background:linear-gradient(to bottom,rgba(255,238,209,.98) 0%,rgba(255,238,209,.9) 22%,rgba(255,238,209,.9) 78%,rgba(255,238,209,.98) 100%),
-      url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bosque-07.jpg?v=1') center/cover no-repeat;
-  }
+  #countdown{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tr.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-bl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-br.png?v=1');background-color:#ffefff}
+  #location,#itinerary,#kids-policy,#album,#family,#dresscode{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tr.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-bl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-br.png?v=1');background-color:#ffeed1}
+  #gifts{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tr.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-bl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-br.png?v=1');background-color:#ffefff}
+  #rsvp{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-tr.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-bl.png?v=1'),url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/hoja-br.png?v=1');background-color:#ffeed1}
   </style>
 </head>
 <body>
