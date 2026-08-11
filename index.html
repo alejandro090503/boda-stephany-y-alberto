@@ -996,9 +996,9 @@ section>*{position:relative;z-index:1}
         (más peso + halo crema que despega el texto del follaje) */
   body{font-weight:400}
   #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
-    text-shadow:0 1px 2px rgba(255,238,209,.95),0 0 10px rgba(255,238,209,.9);
+    text-shadow:0 0 6px #ffffff,0 0 14px #ffffff,0 0 24px rgba(255,255,255,.9);
   }
-  .ttl{font-weight:500;text-shadow:0 1px 3px rgba(255,238,209,.95),0 0 14px rgba(255,238,209,.85)}
+  .ttl{font-weight:500;text-shadow:0 0 6px #ffffff,0 0 14px #ffffff,0 0 26px rgba(255,255,255,.92)}
   .lbl{font-weight:700}
   .cd-num,.itv3-time,.loc-time{font-weight:400}
   .cd-lbl{opacity:.85;font-weight:700}
@@ -1011,55 +1011,34 @@ section>*{position:relative;z-index:1}
   /* imágenes y tarjetas no necesitan halo */
   .wheel-card,.dc-photo,.gbx,.loc-card,.fam-card,.rsvp-card,.kp-card,.alb-qr-frame,.dc-avoid-card,.cd-box,.pal-sw,.dc-modal{text-shadow:none}
 
-  /* ── "NUBECITA": el texto reposa literalmente sobre una nube blanca
-        esponjosa (silueta con bultos), no una tarjeta rectangular ── */
-  .cloud{
-    position:relative;
-    isolation:isolate;
-    background:radial-gradient(ellipse at 50% 30%,#ffffff 0%,#ffffff 45%,rgba(255,238,209,.95) 100%);
-    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-    border-radius:44px 44px 50px 50px/60px 60px 44px 44px;
-    padding:26px 24px 22px;
-    margin-left:auto;margin-right:auto;
-    max-width:360px;
-    box-shadow:0 18px 38px rgba(96,82,0,.16),0 -4px 16px rgba(255,255,255,.7);
-    text-shadow:none !important;
-  }
-  .cloud::before,.cloud::after{
-    content:'';position:absolute;z-index:-1;pointer-events:none;
-    background:#ffffff;border-radius:50%;
-    box-shadow:0 6px 16px rgba(96,82,0,.1);
-    filter:blur(.4px);
-  }
-  .cloud::before{width:34%;height:62%;top:-24%;left:4%}
-  .cloud::after{width:30%;height:52%;top:-19%;right:6%}
+  /* ── HUMO/NUBE BLANCA detrás del texto: sin card, se ciñe a las letras ── */
+  .cloud{background:none !important;border-radius:0 !important;padding:0 !important;
+    box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+    max-width:none !important;border:0 !important}
+  .cloud::before,.cloud::after{content:none !important}
   .head-cloud{margin-bottom:22px}
-  .itv3-cloud{max-width:280px;padding:14px 20px;border-radius:20px;margin-top:2px}
   p.cloud{margin-bottom:28px}
+  /* el humo se aplica a las LETRAS, así solo cubre el texto */
+  .cloud,.cloud .lbl,.cloud .ttl,.cloud .itv3-time,.cloud .itv3-ev,.cloud .itv3-sub,
+  .cloud .dc-title,.cloud .dc-title-sub{
+    text-shadow:
+      0 0 6px #ffffff,0 0 12px #ffffff,0 0 20px #ffffff,
+      0 0 30px rgba(255,255,255,.95),0 0 44px rgba(255,255,255,.8) !important;
+  }
 
-  /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre.
-        La imagen va en ::before con máscara vertical que la desvanece
-        arriba/abajo -> transición suave y uniforme entre secciones
-        (misma técnica que boda-jennifer), en vez de un corte duro. ── */
+  /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre ── */
   #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
-    background-color:#ffeed1;
+    background-color:#ffeed1;background-repeat:no-repeat;background-position:center;background-size:100% 100%;
   }
-  #countdown::before,#location::before,#itinerary::before,#kids-policy::before,
-  #gifts::before,#album::before,#family::before,#rsvp::before,#dresscode::before{
-    content:'';position:absolute;inset:-2px;z-index:-1;pointer-events:none;
-    background-repeat:no-repeat;background-position:center;background-size:100% 100%;
-    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 13%,#000 87%,transparent 100%);
-    mask-image:linear-gradient(to bottom,transparent 0%,#000 13%,#000 87%,transparent 100%);
-  }
-  #countdown::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-countdown.jpg?v=1')}
-  #location::before   {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-location.jpg?v=1')}
-  #itinerary::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-itinerary.jpg?v=1')}
-  #kids-policy::before{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-kids.jpg?v=1')}
-  #gifts::before      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-gifts.jpg?v=1')}
-  #album::before      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-album.jpg?v=1')}
-  #family::before     {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-family.jpg?v=1')}
-  #rsvp::before       {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-rsvp.jpg?v=1')}
-  #dresscode::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-dresscode.jpg?v=1')}
+  #countdown  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-countdown.jpg?v=1')}
+  #location   {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-location.jpg?v=1')}
+  #itinerary  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-itinerary.jpg?v=1')}
+  #kids-policy{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-kids.jpg?v=1')}
+  #gifts      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-gifts.jpg?v=1')}
+  #album      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-album.jpg?v=1')}
+  #family     {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-family.jpg?v=1')}
+  #rsvp       {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-rsvp.jpg?v=1')}
+  #dresscode  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-dresscode.jpg?v=1')}
   </style>
 </head>
 <body>
