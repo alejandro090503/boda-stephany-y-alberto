@@ -1011,35 +1011,55 @@ section>*{position:relative;z-index:1}
   /* imágenes y tarjetas no necesitan halo */
   .wheel-card,.dc-photo,.gbx,.loc-card,.fam-card,.rsvp-card,.kp-card,.alb-qr-frame,.dc-avoid-card,.cd-box,.pal-sw,.dc-modal{text-shadow:none}
 
-  /* ── "NUBECITA": card difuminada crema detrás de los textos sueltos,
-        para que se lean sobre los marcos botánicos ── */
+  /* ── "NUBECITA": el texto reposa literalmente sobre una nube blanca
+        esponjosa (silueta con bultos), no una tarjeta rectangular ── */
   .cloud{
-    background:rgba(255,238,209,.86);
-    -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
-    border-radius:26px;
-    padding:20px 22px;
+    position:relative;
+    isolation:isolate;
+    background:radial-gradient(ellipse at 50% 30%,#ffffff 0%,#ffffff 45%,rgba(255,238,209,.95) 100%);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border-radius:44px 44px 50px 50px/60px 60px 44px 44px;
+    padding:26px 24px 22px;
     margin-left:auto;margin-right:auto;
     max-width:360px;
-    box-shadow:0 8px 26px rgba(96,82,0,.14);
+    box-shadow:0 18px 38px rgba(96,82,0,.16),0 -4px 16px rgba(255,255,255,.7);
     text-shadow:none !important;
   }
+  .cloud::before,.cloud::after{
+    content:'';position:absolute;z-index:-1;pointer-events:none;
+    background:#ffffff;border-radius:50%;
+    box-shadow:0 6px 16px rgba(96,82,0,.1);
+    filter:blur(.4px);
+  }
+  .cloud::before{width:34%;height:62%;top:-24%;left:4%}
+  .cloud::after{width:30%;height:52%;top:-19%;right:6%}
   .head-cloud{margin-bottom:22px}
   .itv3-cloud{max-width:280px;padding:14px 20px;border-radius:20px;margin-top:2px}
   p.cloud{margin-bottom:28px}
 
-  /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre ── */
+  /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre.
+        La imagen va en ::before con máscara vertical que la desvanece
+        arriba/abajo -> transición suave y uniforme entre secciones
+        (misma técnica que boda-jennifer), en vez de un corte duro. ── */
   #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
-    background-color:#ffeed1;background-repeat:no-repeat;background-position:center;background-size:100% 100%;
+    background-color:#ffeed1;
   }
-  #countdown  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-countdown.jpg?v=1')}
-  #location   {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-location.jpg?v=1')}
-  #itinerary  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-itinerary.jpg?v=1')}
-  #kids-policy{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-kids.jpg?v=1')}
-  #gifts      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-gifts.jpg?v=1')}
-  #album      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-album.jpg?v=1')}
-  #family     {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-family.jpg?v=1')}
-  #rsvp       {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-rsvp.jpg?v=1')}
-  #dresscode  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-dresscode.jpg?v=1')}
+  #countdown::before,#location::before,#itinerary::before,#kids-policy::before,
+  #gifts::before,#album::before,#family::before,#rsvp::before,#dresscode::before{
+    content:'';position:absolute;inset:-2px;z-index:-1;pointer-events:none;
+    background-repeat:no-repeat;background-position:center;background-size:100% 100%;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 13%,#000 87%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,#000 13%,#000 87%,transparent 100%);
+  }
+  #countdown::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-countdown.jpg?v=1')}
+  #location::before   {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-location.jpg?v=1')}
+  #itinerary::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-itinerary.jpg?v=1')}
+  #kids-policy::before{background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-kids.jpg?v=1')}
+  #gifts::before      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-gifts.jpg?v=1')}
+  #album::before      {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-album.jpg?v=1')}
+  #family::before     {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-family.jpg?v=1')}
+  #rsvp::before       {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-rsvp.jpg?v=1')}
+  #dresscode::before  {background-image:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/boda-stephany-y-alberto/bg-dresscode.jpg?v=1')}
   </style>
 </head>
 <body>
@@ -1541,26 +1561,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  envVideo.addEventListener('timeupdate', function () {
-    if (!flashStarted && envVideo.duration && envVideo.currentTime >= envVideo.duration - 0.35) {
-      flashStarted = true;
-      gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
-    }
-  });
-
+  // El video SIEMPRE se reproduce completo: el flash solo dispara con 'ended'
+  // (o por el fallback de carga fallida abajo, nunca mientras está reproduciendo).
   envVideo.addEventListener('ended', function () {
-    if (!invitationReady) {
+    if (!flashStarted) {
+      flashStarted = true;
       gsap.to(envFlash, { opacity: 1, duration: 1.5, ease: 'none', onComplete: revealInvitation });
     }
   });
 
   function playVideo() {
+    var loadFailTimer;
     var p = envVideo.play();
     gsap.to(envImage, { opacity: 0, duration: 0.55, ease: 'power2.inOut', onComplete: function () { envImage.style.display = 'none'; } });
     gsap.to(envVideo, { opacity: 1, duration: 0.55, ease: 'power2.inOut' });
     if (p !== undefined) p.catch(function () {
-      gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
+      if (!flashStarted) {
+        flashStarted = true;
+        gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
+      }
     });
+    // Red de seguridad SOLO por si el video se traba y nunca dispara 'ended'
+    // (nunca corta una reproducción en curso: se reinicia en cada 'timeupdate').
+    function armSafety() {
+      clearTimeout(loadFailTimer);
+      var remaining = (envVideo.duration && isFinite(envVideo.duration))
+        ? (envVideo.duration - envVideo.currentTime) * 1000 + 2500
+        : 8000;
+      loadFailTimer = setTimeout(function () {
+        if (!flashStarted) {
+          flashStarted = true;
+          gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
+        }
+      }, remaining);
+    }
+    envVideo.addEventListener('timeupdate', armSafety);
+    armSafety();
   }
 
   function openEnvelope() {
@@ -1579,11 +1615,13 @@ document.addEventListener('DOMContentLoaded', () => {
         envVideo.removeEventListener('canplay', handler);
         playVideo();
       });
+      // Solo dispara si el video JAMÁS llega a poder reproducirse (falla de carga real)
       setTimeout(function () {
-        if (!flashStarted) {
+        if (!flashStarted && envVideo.readyState < 2) {
+          flashStarted = true;
           gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
         }
-      }, 4000);
+      }, 6000);
     }
   }
 
