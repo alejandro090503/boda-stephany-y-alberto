@@ -2,3 +2,9 @@
 .DS_Store
 Thumbs.db
 .env*
+pin/
+fotos-src/
+fotos-out/
+marcos/
+fondos/
+hojas/
