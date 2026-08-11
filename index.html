@@ -996,9 +996,15 @@ section>*{position:relative;z-index:1}
         (más peso + halo crema que despega el texto del follaje) */
   body{font-weight:400}
   #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
-    text-shadow:0 0 5px #ffffff,0 0 10px #ffffff,0 0 18px #ffffff,0 0 28px #ffffff,0 0 40px rgba(255,255,255,.95);
+    text-shadow:
+      0 0 4px #ffffff,0 0 4px #ffffff,0 0 9px #ffffff,0 0 9px #ffffff,
+      0 0 16px #ffffff,0 0 16px #ffffff,0 0 26px #ffffff,0 0 38px #ffffff,
+      0 0 52px rgba(255,255,255,.95);
   }
-  .ttl{font-weight:500;text-shadow:0 0 5px #ffffff,0 0 11px #ffffff,0 0 20px #ffffff,0 0 32px #ffffff,0 0 46px rgba(255,255,255,.95)}
+  .ttl{font-weight:500;text-shadow:
+      0 0 4px #ffffff,0 0 4px #ffffff,0 0 10px #ffffff,0 0 10px #ffffff,
+      0 0 18px #ffffff,0 0 18px #ffffff,0 0 30px #ffffff,0 0 44px #ffffff,
+      0 0 60px rgba(255,255,255,.95)}
   .lbl{font-weight:700}
   .cd-num,.itv3-time,.loc-time{font-weight:400}
   .cd-lbl{opacity:.85;font-weight:700}
@@ -1020,10 +1026,19 @@ section>*{position:relative;z-index:1}
   p.cloud{margin-bottom:28px}
   /* el humo se aplica a las LETRAS, así solo cubre el texto */
   .cloud,.cloud .lbl,.cloud .ttl,.cloud .itv3-time,.cloud .itv3-ev,.cloud .itv3-sub,
-  .cloud .dc-title,.cloud .dc-title-sub{
+  .cloud .dc-title-sub{
     text-shadow:
-      0 0 5px #ffffff,0 0 10px #ffffff,0 0 18px #ffffff,0 0 28px #ffffff,
-      0 0 40px rgba(255,255,255,.97),0 0 56px rgba(255,255,255,.85) !important;
+      0 0 4px #ffffff,0 0 4px #ffffff,0 0 9px #ffffff,0 0 9px #ffffff,
+      0 0 16px #ffffff,0 0 16px #ffffff,0 0 26px #ffffff,0 0 38px #ffffff,
+      0 0 52px rgba(255,255,255,.95) !important;
+  }
+  /* "Boho Elegante" es texto con degradado (relleno transparente): el
+     text-shadow se vería POR ENCIMA de las letras. Su nube va con
+     drop-shadow, que rodea la forma real del texto. */
+  .dc-title{
+    text-shadow:none !important;
+    filter:drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 12px #ffffff)
+           drop-shadow(0 0 22px #ffffff) drop-shadow(0 0 34px rgba(255,255,255,.9));
   }
 
   /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre ── */
