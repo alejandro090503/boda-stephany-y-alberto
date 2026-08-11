@@ -92,43 +92,42 @@ section::after{
 @keyframes vinylSpin{to{transform:rotate(360deg)}}
 .vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
   background:
-    radial-gradient(circle,#831100 4%,transparent 4.5%),
-    radial-gradient(circle,#ffeed1 0%,#953500 17%,#7a4a00 19%,transparent 19.5%),
+    /* etiqueta central roja de la paleta */
+    radial-gradient(circle,#831100 0%,#831100 30%,#000000 30.8%,transparent 31.5%),
+    /* surcos del vinilo negro */
     repeating-radial-gradient(circle,
-      transparent 20%,rgba(149,53,0,.06) 20.8%,transparent 21.5%,
-      transparent 24%,rgba(149,53,0,.04) 24.8%,transparent 25.5%,
-      transparent 28%,rgba(149,53,0,.06) 28.8%,transparent 29.5%,
-      transparent 32%,rgba(149,53,0,.04) 32.8%,transparent 33.5%,
-      transparent 36%,rgba(149,53,0,.06) 36.8%,transparent 37.5%,
-      transparent 40%,rgba(149,53,0,.04) 40.8%,transparent 41.5%,
-      transparent 44%,rgba(149,53,0,.06) 44.8%,transparent 45.5%,
-      transparent 48%,rgba(149,53,0,.04) 48.8%,transparent 49.5%,
-      transparent 52%,rgba(149,53,0,.06) 52.8%,transparent 53.5%,
-      transparent 56%,rgba(149,53,0,.04) 56.8%,transparent 57.5%,
-      transparent 60%,rgba(149,53,0,.06) 60.8%,transparent 61.5%,
-      transparent 64%,rgba(149,53,0,.04) 64.8%,transparent 65.5%,
-      transparent 68%,rgba(149,53,0,.06) 68.8%,transparent 69.5%,
-      transparent 72%,rgba(149,53,0,.04) 72.8%,transparent 73.5%,
-      transparent 76%,rgba(149,53,0,.06) 76.8%,transparent 77.5%,
-      transparent 80%,rgba(149,53,0,.04) 80.8%,transparent 81.5%,
-      transparent 84%,rgba(149,53,0,.06) 84.8%,transparent 85.5%,
-      transparent 88%,rgba(149,53,0,.04) 88.8%,transparent 89.5%,
-      transparent 92%,rgba(149,53,0,.06) 92.8%,transparent 93.5%,
-      transparent 96%,rgba(149,53,0,.04) 96.8%,transparent 97.5%
+      transparent 32%,rgba(255,255,255,.07) 32.8%,transparent 33.5%,
+      transparent 36%,rgba(255,255,255,.05) 36.8%,transparent 37.5%,
+      transparent 40%,rgba(255,255,255,.07) 40.8%,transparent 41.5%,
+      transparent 44%,rgba(255,255,255,.05) 44.8%,transparent 45.5%,
+      transparent 48%,rgba(255,255,255,.07) 48.8%,transparent 49.5%,
+      transparent 52%,rgba(255,255,255,.05) 52.8%,transparent 53.5%,
+      transparent 56%,rgba(255,255,255,.07) 56.8%,transparent 57.5%,
+      transparent 60%,rgba(255,255,255,.05) 60.8%,transparent 61.5%,
+      transparent 64%,rgba(255,255,255,.07) 64.8%,transparent 65.5%,
+      transparent 68%,rgba(255,255,255,.05) 68.8%,transparent 69.5%,
+      transparent 72%,rgba(255,255,255,.07) 72.8%,transparent 73.5%,
+      transparent 76%,rgba(255,255,255,.05) 76.8%,transparent 77.5%,
+      transparent 80%,rgba(255,255,255,.07) 80.8%,transparent 81.5%,
+      transparent 84%,rgba(255,255,255,.05) 84.8%,transparent 85.5%,
+      transparent 88%,rgba(255,255,255,.07) 88.8%,transparent 89.5%,
+      transparent 92%,rgba(255,255,255,.05) 92.8%,transparent 93.5%,
+      transparent 96%,rgba(255,255,255,.07) 96.8%,transparent 97.5%
     ),
-    radial-gradient(circle,#831100 0%,#831100 60%,#831100 100%);
-  box-shadow:inset 0 0 8px rgba(0,0,0,.4);
+    /* cuerpo del disco: negro */
+    radial-gradient(circle,#000000 0%,#000000 100%);
+  box-shadow:inset 0 0 10px rgba(0,0,0,.75);
 }
 .vinyl-sheen{position:absolute;inset:0;border-radius:50%;
-  background:linear-gradient(135deg,transparent 30%,rgba(149,53,0,.09) 42%,rgba(149,53,0,.16) 48%,rgba(149,53,0,.09) 54%,transparent 66%);
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.06) 42%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.06) 54%,transparent 66%);
   pointer-events:none}
 .vinyl-label-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:'Great Vibes',cursive;font-size:11px;color:#831100;
-  text-align:center;line-height:1.1;opacity:.8;pointer-events:none;width:26px}
-.vinyl-label-text small{font-family:'Lato',sans-serif;font-size:5px;letter-spacing:.12em;display:block;margin-top:1px;opacity:.6}
-.vinyl-hole{position:absolute;top:50%;left:50%;width:6px;height:6px;
-  transform:translate(-50%,-50%);border-radius:50%;background:#831100;
-  box-shadow:0 0 0 1.5px rgba(149,53,0,.5)}
+  font-family:'Great Vibes',cursive;font-size:11px;color:#ffeed1;
+  text-align:center;line-height:1.1;opacity:.95;pointer-events:none;width:26px}
+.vinyl-label-text small{font-family:'Lato',sans-serif;font-size:5px;letter-spacing:.12em;display:block;margin-top:1px;opacity:.75}
+.vinyl-hole{position:absolute;top:50%;left:50%;width:5px;height:5px;
+  transform:translate(-50%,-50%);border-radius:50%;background:#000000;
+  box-shadow:0 0 0 1.5px rgba(255,238,209,.45)}
 .vinyl-icons{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:17px;height:17px;pointer-events:none;z-index:2}
 .vinyl-icons svg{width:100%;height:100%;display:block}
@@ -963,13 +962,10 @@ section>*{position:relative;z-index:1}
 
 /* ── SHIMMER LINE (moving gold line between sections) ── */
 /* ── Section blend transitions ── */
-.blend{height:clamp(60px,10vh,90px);position:relative;z-index:1;margin:0;pointer-events:none}
-.blend-dark-beige{background:linear-gradient(to bottom,#ffeed1,#ffefff)}
-.blend-beige-dark{background:linear-gradient(to bottom,#ffefff,#ffeed1)}
-.blend-dark-dark{
-  height:clamp(30px,5vh,50px);
-  background:linear-gradient(to bottom,#ffeed1,#ebebeb 50%,#ffeed1);
-}
+/* Separadores neutros: crema uniforme para no romper la armonía entre secciones */
+.blend{height:clamp(26px,4vh,42px);position:relative;z-index:1;margin:0;pointer-events:none;background:#ffeed1}
+.blend-dark-beige,.blend-beige-dark{background:#ffeed1}
+.blend-dark-dark{height:clamp(20px,3vh,32px);background:#ffeed1}
 
 .shimmer-line{
   width:100%;height:1px;position:relative;overflow:hidden;z-index:2;
@@ -995,6 +991,25 @@ section>*{position:relative;z-index:1}
 }
 .el-credit:hover{opacity:.85}
 .el-credit svg{opacity:.9}
+  /* ── LEGIBILIDAD: refuerzo tipográfico sobre fondos con textura ──
+        (más peso + halo crema que despega el texto del follaje) */
+  body{font-weight:400}
+  #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
+    text-shadow:0 1px 2px rgba(255,238,209,.95),0 0 10px rgba(255,238,209,.9);
+  }
+  .ttl{font-weight:500;text-shadow:0 1px 3px rgba(255,238,209,.95),0 0 14px rgba(255,238,209,.85)}
+  .lbl{font-weight:700}
+  .cd-num,.itv3-time,.loc-time{font-weight:400}
+  .cd-lbl{opacity:.85;font-weight:700}
+  .itv3-ev{color:#605200;font-weight:600}
+  .itv3-sub,.gal-hint,.alb-scan{opacity:1;font-weight:500}
+  .loc-addr,.gf-sub,.alb-sub,.kp-msg,.rsvp-text,.cal-sub{opacity:1;font-weight:500}
+  .fam-nms,.fam-role,.fam-ttl{opacity:1;font-weight:500}
+  .rsvp-pases-label,.rsvp-deadline{opacity:.95}
+  .dc-title-sub,.pal-nm,.dc-avoid-nm,.dc-avoid-desc{opacity:1}
+  /* imágenes y tarjetas no necesitan halo */
+  .wheel-card,.dc-photo,.gbx,.loc-card,.fam-card,.rsvp-card,.kp-card,.alb-qr-frame,.dc-avoid-card,.cd-box,.pal-sw,.dc-modal{text-shadow:none}
+
   /* ── FONDOS DE INVITACIÓN BOTÁNICOS (marco de greenery, centro limpio) ── */
   #countdown,#itinerary,#gifts,#family,#dresscode{
     background:linear-gradient(rgba(255,238,209,.16),rgba(255,238,209,.16)),
@@ -1043,8 +1058,8 @@ section>*{position:relative;z-index:1}
     </div>
   </div>
   <div class="vinyl-icons">
-    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#831100" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#831100" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#ffeed1" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#ffeed1" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
   </div>
 </button>
 
@@ -1246,7 +1261,7 @@ section>*{position:relative;z-index:1}
   <p class="alb-hint">Compartirás tus fotos con los demás invitados.<br>Podrás ver el álbum completo después del evento.</p>
 </section>
 
-<div class="blend" style="background:linear-gradient(to bottom,#ebebeb,#ffeed1)"></div>
+<div class="blend"></div>
 
 <!-- ═══════════════ 9. DRESS CODE ════════════════════ -->
 <section id="dresscode">
@@ -1310,7 +1325,7 @@ section>*{position:relative;z-index:1}
   </div>
 </div>
 
-<div class="blend" style="background:linear-gradient(to bottom,#ffeed1,#ebebeb)"></div>
+<div class="blend"></div>
 
 <!-- ═══════════════ 10. FAMILIA ══════════════════════ -->
 <section id="family">
