@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#7a4a00">
+  <meta name="theme-color" content="#526c00">
   <title>Stephany &amp; Alberto · 17 · X · MMXXVI</title>
   <meta property="og:title" content="Boda Stephany & Alberto · 17 Octubre 2026">
   <meta property="og:description" content="Acompáñanos a celebrar nuestra boda en Estado de México">
@@ -647,8 +647,8 @@ section>*{position:relative;z-index:1}
 }
 .wheel-ring.dragging{cursor:grabbing}
 .wheel-card{
-  position:absolute;width:200px;height:280px;
-  left:50%;top:50%;margin-left:-100px;margin-top:-140px;
+  position:absolute;width:186px;height:280px;
+  left:50%;top:50%;margin-left:-93px;margin-top:-140px;
   border-radius:18px;overflow:hidden;
   border:2px solid rgba(149,53,0,.30);
   box-shadow:0 12px 40px rgba(96,82,0,.3),0 4px 12px rgba(0,0,0,.4);
@@ -823,13 +823,14 @@ section>*{position:relative;z-index:1}
 .ft-note{font-size:clamp(9px,2.5vw,11px);color:#ffeed1;opacity:.4;margin-top:22px;letter-spacing:1px;line-height:1.8}
 
 /* ── ENVELOPE ─────────────────────────────────────────── */
-#envelope-screen{position:fixed;inset:0;z-index:10000;overflow:hidden;cursor:pointer;opacity:0;background:#7a4a00;animation:envFadeIn 1.2s ease .5s forwards}
+#envelope-screen{position:fixed;inset:0;z-index:10000;overflow:hidden;cursor:pointer;opacity:0;background:#526c00;animation:envFadeIn 1.2s ease .5s forwards}
 @keyframes envFadeIn{to{opacity:1}}
 #env-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:2;transform:scale(1.18)}
 #env-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:3;opacity:0;transform:scale(1.18)}
 #env-flash{position:fixed;inset:0;background:#fff;z-index:9999;opacity:0;pointer-events:none}
-.envelope-hint{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(149,53,0,.8);opacity:0;cursor:pointer;white-space:nowrap;z-index:10;text-shadow:0 1px 4px rgba(0,0,0,.4);animation:envFadeIn .9s ease 1.2s forwards}
-.envelope-hint::after{content:'';display:block;width:32px;height:1px;background:linear-gradient(90deg,transparent,rgba(149,53,0,.5),transparent);margin:10px auto 0;animation:hintPulse 2.2s ease-in-out infinite}
+.envelope-hint{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:#ffeed1;opacity:0;cursor:pointer;white-space:nowrap;z-index:10;text-shadow:0 1px 6px rgba(0,0,0,.75),0 0 18px rgba(0,0,0,.5);animation:envFadeIn .9s ease 1.2s forwards, hintFloat 2.2s ease-in-out 1.2s infinite}
+.envelope-hint::after{content:'';display:block;width:32px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,238,209,.75),transparent);margin:10px auto 0;animation:hintPulse 2.2s ease-in-out infinite}
+@keyframes hintFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
 @keyframes hintPulse{0%,100%{opacity:.4;width:32px}50%{opacity:1;width:54px}}
 
 /* ── KIDS POLICY ──────────────────────────────────────── */
@@ -1010,6 +1011,22 @@ section>*{position:relative;z-index:1}
   /* imágenes y tarjetas no necesitan halo */
   .wheel-card,.dc-photo,.gbx,.loc-card,.fam-card,.rsvp-card,.kp-card,.alb-qr-frame,.dc-avoid-card,.cd-box,.pal-sw,.dc-modal{text-shadow:none}
 
+  /* ── "NUBECITA": card difuminada crema detrás de los textos sueltos,
+        para que se lean sobre los marcos botánicos ── */
+  .cloud{
+    background:rgba(255,238,209,.86);
+    -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
+    border-radius:26px;
+    padding:20px 22px;
+    margin-left:auto;margin-right:auto;
+    max-width:360px;
+    box-shadow:0 8px 26px rgba(96,82,0,.14);
+    text-shadow:none !important;
+  }
+  .head-cloud{margin-bottom:22px}
+  .itv3-cloud{max-width:280px;padding:14px 20px;border-radius:20px;margin-top:2px}
+  p.cloud{margin-bottom:28px}
+
   /* ── MARCOS DE JARDÍN/BOSQUE: uno DISTINTO por sección, centro libre ── */
   #countdown,#location,#itinerary,#kids-policy,#gifts,#album,#family,#rsvp,#dresscode{
     background-color:#ffeed1;background-repeat:no-repeat;background-position:center;background-size:100% 100%;
@@ -1101,10 +1118,12 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 2. CUENTA REGRESIVA ══════════════ -->
 <section id="countdown">
-  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,3.8vw,17px);text-align:center;color:var(--cream);opacity:.85;line-height:1.9;margin-bottom:28px;max-width:340px;margin-left:auto;margin-right:auto;font-weight:500">La magia no siempre vive en los cuentos; a veces florece en dos almas que deciden caminar juntas para siempre. Con el corazón lleno de amor e ilusión, queremos invitarte a ser parte del inicio de nuestra historia más hermosa.</p>
+  <p class="cloud" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,3.8vw,17px);text-align:center;color:var(--cream);line-height:1.9;margin-bottom:28px;max-width:340px;margin-left:auto;margin-right:auto;font-weight:500">La magia no siempre vive en los cuentos; a veces florece en dos almas que deciden caminar juntas para siempre. Con el corazón lleno de amor e ilusión, queremos invitarte a ser parte del inicio de nuestra historia más hermosa.</p>
+  <div class="cloud head-cloud">
   <span class="lbl">El gran día llega en</span>
   <h2 class="ttl">Cuenta Regresiva</h2>
   <div class="gline"></div>
+  </div>
   <div class="cd-grid">
     <div class="cd-box"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Días</span></div>
     <div class="cd-box"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Horas</span></div>
@@ -1117,9 +1136,11 @@ section>*{position:relative;z-index:1}
 <section id="location">
   <svg class="corner-orn corner-orn--tl" viewBox="0 0 28 28"><path d="M2 26V8Q2 2 8 2h18"/></svg>
   <svg class="corner-orn corner-orn--tr" viewBox="0 0 28 28"><path d="M2 26V8Q2 2 8 2h18"/></svg>
+  <div class="cloud head-cloud">
   <span class="lbl">¿Dónde y cuándo?</span>
   <h2 class="ttl">La Celebración</h2>
   <div class="gline"></div>
+  </div>
 
   <div class="loc-card" style="text-align:center">
     <p class="loc-type">✦  Recepción</p>
@@ -1138,9 +1159,11 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 4. ITINERARIO ════════════════════ -->
 <section id="itinerary">
+  <div class="cloud head-cloud">
   <span class="lbl">Programa del día</span>
   <h2 class="ttl">Itinerario</h2>
   <div class="gline"></div>
+  </div>
   <div class="itv3">
     <div class="itv3-track"></div>
     <div class="itv3-glow" id="itvGlow"></div>
@@ -1149,37 +1172,47 @@ section>*{position:relative;z-index:1}
 
     <div class="itv3-item">
       <div class="itv3-gem"></div>
+      <div class="cloud itv3-cloud">
       <div class="itv3-time">4:00 <span class="itv3-ampm">PM</span></div>
       <div class="itv3-ev">Recepción</div>
       <div class="itv3-sub">Jardín la Cabaña del Tata</div>
+      </div>
     </div>
 
     <div class="itv3-item">
       <div class="itv3-gem itv3-gem-brown"></div>
+      <div class="cloud itv3-cloud">
       <div class="itv3-time">5:00 <span class="itv3-ampm">PM</span></div>
       <div class="itv3-ev">Boda Civil</div>
       <div class="itv3-sub">Ceremonia civil</div>
+      </div>
     </div>
 
     <div class="itv3-item">
       <div class="itv3-gem itv3-gem-mid"></div>
+      <div class="cloud itv3-cloud">
       <div class="itv3-time">6:00 <span class="itv3-ampm">PM</span></div>
       <div class="itv3-ev">Boda Simbólica</div>
       <div class="itv3-sub">Ceremonia simbólica</div>
+      </div>
     </div>
 
     <div class="itv3-item">
       <div class="itv3-gem itv3-gem-brown"></div>
+      <div class="cloud itv3-cloud">
       <div class="itv3-time">7:00 <span class="itv3-ampm">PM</span></div>
       <div class="itv3-ev">Cena</div>
       <div class="itv3-sub">Banquete</div>
+      </div>
     </div>
 
     <div class="itv3-item">
       <div class="itv3-gem"></div>
+      <div class="cloud itv3-cloud">
       <div class="itv3-time">8:00 <span class="itv3-ampm">PM</span></div>
       <div class="itv3-ev">Baile de Novios</div>
       <div class="itv3-sub">El primer vals</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1187,9 +1220,11 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 6. KIDS POLICY ═══════════════════ -->
 <section id="kids-policy">
+  <div class="cloud head-cloud">
   <span class="lbl">Con todo nuestro cariño</span>
   <h2 class="ttl">Solo Adultos</h2>
   <div class="gline"></div>
+  </div>
   <div class="kp-card">
     <div class="kp-icons">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M5 12v7a1 1 0 001 1h12a1 1 0 001-1v-7M8 12V8a4 4 0 018 0v4"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
@@ -1205,10 +1240,12 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 7. MESA DE REGALOS ═══════════════ -->
 <section id="gifts">
+  <div class="cloud head-cloud">
   <span class="lbl">Tu presencia es nuestro mejor regalo</span>
   <h2 class="ttl">Mesa de Regalos</h2>
   <div class="gline"></div>
-  <p class="gf-sub">Si deseas obsequiarnos algo especial,<br>compartimos contigo nuestras opciones.</p>
+  </div>
+  <p class="gf-sub cloud">Si deseas obsequiarnos algo especial,<br>compartimos contigo nuestras opciones.</p>
 
   <div class="gbx" style="max-width:340px;margin:36px auto 0">
     <button type="button" class="gbx-present" aria-label="Abrir regalo — Liverpool">
@@ -1244,10 +1281,12 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 8. ÁLBUM COMPARTIDO ══════════════ -->
 <section id="album">
+  <div class="cloud head-cloud">
   <span class="lbl">Captura cada momento</span>
   <h2 class="ttl">Álbum Compartido</h2>
   <div class="gline"></div>
-  <p class="alb-sub">Escanea el código QR y sube las fotos<br>que tomes durante el evento.</p>
+  </div>
+  <p class="alb-sub cloud">Escanea el código QR y sube las fotos<br>que tomes durante el evento.</p>
 
   <div class="alb-qr-wrap">
     <div class="alb-qr-frame">
@@ -1269,12 +1308,16 @@ section>*{position:relative;z-index:1}
 
 <!-- ═══════════════ 9. DRESS CODE ════════════════════ -->
 <section id="dresscode">
+  <div class="cloud head-cloud">
   <span class="lbl">Vestimenta</span>
   <h2 class="ttl">Código de Vestimenta</h2>
   <div class="gline"></div>
+  </div>
 
+  <div class="cloud" style="width:fit-content;margin:0 auto;padding:14px 30px">
   <p class="dc-title">Boho Elegante</p>
   <p class="dc-title-sub">Tonos tierra &middot; Naturales</p>
+  </div>
 
   <div class="dc-photo" id="dcPhoto" role="button" tabindex="0" aria-label="Ampliar la referencia de vestimenta">
     <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/70750b9c-a231-4756-bc3d-cf7d7212126a/codigo-vestimenta-1782766812509.png" alt="Referencia de vestimenta boho elegante" loading="lazy">
@@ -1335,9 +1378,11 @@ section>*{position:relative;z-index:1}
 <section id="family">
   <svg class="corner-orn corner-orn--tl" viewBox="0 0 28 28"><path d="M2 26V8Q2 2 8 2h18"/></svg>
   <svg class="corner-orn corner-orn--tr" viewBox="0 0 28 28"><path d="M2 26V8Q2 2 8 2h18"/></svg>
+  <div class="cloud head-cloud">
   <span class="lbl">Con amor de</span>
   <h2 class="ttl">Padres y Padrinos</h2>
   <div class="gline"></div>
+  </div>
 
   <p class="fam-ttl">Padres del Novio</p>
   <div class="fam-card"><p class="fam-nms"><em style="opacity:.6;font-style:italic">Por confirmar</em></p></div>
@@ -1471,11 +1516,6 @@ document.addEventListener('DOMContentLoaded', () => {
   var hint      = document.getElementById('env-hint');
   var opened    = false;
 
-  gsap.to(envImage, {
-    scale: 1.20, duration: 2.2, ease: 'sine.inOut',
-    repeat: -1, yoyo: true, delay: 1.5
-  });
-
   var flashStarted = false, invitationReady = false;
 
   function prepareInvitation() {
@@ -1502,9 +1542,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   envVideo.addEventListener('timeupdate', function () {
-    if (!flashStarted && envVideo.duration && envVideo.currentTime >= 2) {
+    if (!flashStarted && envVideo.duration && envVideo.currentTime >= envVideo.duration - 0.35) {
       flashStarted = true;
-      gsap.to(envFlash, { opacity: 1, duration: 2, ease: 'none', onComplete: revealInvitation });
+      gsap.to(envFlash, { opacity: 1, duration: 1.2, ease: 'none', onComplete: revealInvitation });
     }
   });
 
