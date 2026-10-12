@@ -1421,7 +1421,7 @@ section>*{position:relative;z-index:1}
     <div class="rsvp-inner">
       <span class="lbl" style="font-size:8px;letter-spacing:4px">Sábado 17 de Octubre</span>
       <h2 class="rsvp-title">Confirmación <em>Boda</em></h2>
-      <p class="rsvp-text">Confirma tu asistencia antes del <strong style="color:var(--gold);font-weight:700">24 de Septiembre de 2026</strong>.</p>
+      <p class="rsvp-text">Confirma tu asistencia antes del <strong style="color:var(--gold);font-weight:700">13 de Octubre de 2026</strong>.</p>
 
       <p id="rsvp-name-display" style="display:none;font-family:'Great Vibes',cursive;font-size:clamp(30px,7vw,44px);color:var(--gold);line-height:1.2;margin:18px auto 4px"></p>
 
@@ -1452,7 +1452,7 @@ section>*{position:relative;z-index:1}
 
       <div class="rsvp-deadline">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-        Fecha límite · 24 Septiembre 2026
+        Fecha límite · 13 Octubre 2026
       </div>
     </div>
   </div>
@@ -1904,7 +1904,7 @@ function initRSVP() {
   var RAW      = parseInt(params.get('pases'), 10);
   var PASES    = (!isNaN(RAW) && RAW >= 1 && RAW <= 20) ? RAW : 1;
   var URL_BODA = 'https://boda-stephany-y-alberto.vercel.app';
-  var DEADLINE = new Date(2026, 8, 24, 23, 59, 59, 999);
+  var DEADLINE = new Date(2026, 9, 13, 23, 59, 59, 999); // 13 oct 2026
   var FROZEN   = Date.now() > DEADLINE.getTime();
 
   var nameDisp   = document.getElementById('rsvp-name-display');
@@ -2181,7 +2181,7 @@ function initWheel(){
 /* ── RSVP PANEL INTEGRATION (jennifer style) ────────── */
 (function(){
   var RSVP_URL  = 'https://boda-stephany-y-alberto.vercel.app';
-  var DEADLINE  = new Date(2026, 8, 24, 23, 59, 59, 999);
+  var DEADLINE  = new Date(2026, 9, 13, 23, 59, 59, 999); // 13 oct 2026
   var frozen    = Date.now() > DEADLINE.getTime();
 
   var params    = new URLSearchParams(window.location.search);
